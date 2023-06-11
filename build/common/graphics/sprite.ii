@@ -1,0 +1,105 @@
+# 0 "src/common/graphics/sprite.cpp"
+# 0 "<built-in>"
+# 0 "<command-line>"
+# 1 "src/common/graphics/sprite.cpp"
+# 1 "src/common/graphics/sprite.hpp" 1
+
+
+
+# 1 "src/common/graphics/../types/types.hpp" 1
+
+
+
+typedef unsigned long long u64;
+typedef unsigned long int u32;
+typedef unsigned short u16;
+typedef unsigned char u8;
+
+typedef signed long long i64;
+typedef signed long i32;
+typedef signed short i16;
+typedef signed char i8;
+
+typedef struct Colour {
+    u32 c;
+} Colour;
+
+typedef struct ARGB {
+    u8 a;
+    u8 r;
+    u8 g;
+    u8 b;
+} ARGB;
+
+typedef struct Point2D {
+    u32 x;
+    u32 y;
+} Point2D;
+
+typedef struct Colour2D {
+    Point2D pos;
+    Colour col;
+} Colour2D;
+
+typedef struct SizedBuffer {
+    Colour *buffer;
+    u32 width;
+    u32 height;
+} SizedBuffer;
+# 5 "src/common/graphics/sprite.hpp" 2
+
+typedef struct Sprite{
+    Colour *buffer;
+    u32 width;
+    u32 height;
+}Sprite;
+
+namespace Graphics {
+    void DrawSprite(SizedBuffer *buffer, Point2D position, const Sprite &sprite);
+    void ZoomSprite(SizedBuffer *buffer, Point2D position, const Sprite &sprite, u32 zoom);
+}
+# 2 "src/common/graphics/sprite.cpp" 2
+# 1 "src/common/graphics/basic.hpp" 1
+
+
+namespace Graphics {
+    void SetPixel (SizedBuffer *buffer, const Colour2D &colour);
+    Colour GetPixel (SizedBuffer *buffer, const Point2D pos);
+    u8 InitPixel (SizedBuffer *buffer, const Colour2D &colour, const Colour reference);
+    void DrawRect (SizedBuffer *buffer, const Colour2D &colour, Point2D size);
+    void DrawCircle (SizedBuffer *buffer, const Colour2D &colour, u32 radius);
+
+
+}
+# 3 "src/common/graphics/sprite.cpp" 2
+
+void Graphics::DrawSprite(SizedBuffer *buffer, Point2D position, const Sprite &sprite) {
+    for (u32 y = sprite.height; y > 0; y--) {
+        for (u32 x = 0; x < sprite.width; x++) {
+            const Colour col = sprite.buffer[y * sprite.width + x];
+            if (!(col.c & 0xFF000000)) continue;
+            const Colour2D pixel = {Point2D{position.x + x, position.y + y}, col};
+            Graphics::SetPixel(buffer, pixel);
+        }
+    }
+}
+
+void Graphics::ZoomSprite(SizedBuffer *buffer, Point2D position, const Sprite &sprite, u32 zoom) {
+    for (u32 y = 0; y < sprite.height; y++) {
+        for (u32 x = 0; x < sprite.width; x++) {
+            const Colour col = sprite.buffer[y * sprite.width + x];
+
+            if (!(col.c & 0xFF000000)) continue;
+# 32 "src/common/graphics/sprite.cpp"
+            const Colour2D pixel = Colour2D {
+                .pos = Point2D {
+                    .x = position.x + (x * zoom),
+                    .y = position.y - (y * zoom)
+                },
+                .col = col
+            };
+# 56 "src/common/graphics/sprite.cpp"
+            Graphics::DrawRect(buffer, pixel, Point2D {zoom, zoom});
+        }
+    }
+}
