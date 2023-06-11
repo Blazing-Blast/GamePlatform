@@ -10,7 +10,9 @@ typedef struct Sprite {
 } Sprite;
 
 namespace Graphics {
+    // Draws a bitmap-like sprite to the screen.
     void drawSprite(SizedBuffer *buffer, Point2D position, const Sprite &sprite);
+    // Scales it up by an integrer.
     void zoomSprite(SizedBuffer *buffer, Point2D position, const Sprite &sprite, u32 zoom);
 }
 

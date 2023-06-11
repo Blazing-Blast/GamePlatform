@@ -31,5 +31,6 @@ const u32 foreground = darkElec;
 const u32 background = black;
 const u8  variance   = 2; // setting this to 0 will make it tend to white, otherwise it will behave as expected.
 const i8  bias       = 0;
+const i32 frameTime = 1000/60;
 
 #endif

@@ -11,7 +11,7 @@ Colour Graphics::getPixel(SizedBuffer *buffer, const Point2D pos) {
     return {buffer->buffer[pos.y * buffer->width + pos.x].c & 0x00FFFFFF};
 }
 
-u8 Graphics::onitPixel(SizedBuffer *buffer, const Colour2D &colour, const Colour reference) {
+u8 Graphics::initPixel(SizedBuffer *buffer, const Colour2D &colour, const Colour reference) {
     if (colour.pos.x >= buffer->width || colour.pos.y >= buffer->height) return 0;
     if (Graphics::getPixel(buffer, colour.pos).c != reference.c) return 0;
     Graphics::setPixel(buffer, colour);
