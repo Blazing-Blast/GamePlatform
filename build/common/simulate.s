@@ -1,11 +1,22 @@
 	.file	"simulate.cpp"
 	.text
 	.p2align 4
+	.globl	_Z8contrastm
+	.def	_Z8contrastm;	.scl	2;	.type	32;	.endef
+	.seh_proc	_Z8contrastm
+_Z8contrastm:
+.LFB0:
+	.seh_endprologue
+	movl	%ecx, %eax
+	xorl	$16777215, %eax
+	ret
+	.seh_endproc
+	.p2align 4
 	.globl	_ZN6Common8onResizeEPmmm
 	.def	_ZN6Common8onResizeEPmmm;	.scl	2;	.type	32;	.endef
 	.seh_proc	_ZN6Common8onResizeEPmmm
 _ZN6Common8onResizeEPmmm:
-.LFB6740:
+.LFB6741:
 	pushq	%rbp
 	.seh_pushreg	%rbp
 	pushq	%rdi
@@ -38,7 +49,7 @@ _ZN6Common8onResizeEPmmm:
 	movq	%rdi, sBuffer(%rip)
 	movq	%xmm0, 32(%rsp)
 	movl	%esi, 8+sBuffer(%rip)
-	movl	$-10760454, 40(%rsp)
+	movl	$-11990383, 40(%rsp)
 	call	_ZN8Graphics8DrawRectEP11SizedBufferRK8Colour2D7Point2D
 	leaq	32(%rsp), %rdx
 	movq	%rbp, %rcx
@@ -56,7 +67,7 @@ _ZN6Common8onResizeEPmmm:
 	.def	_ZN6Common8newPixelEPmmm;	.scl	2;	.type	32;	.endef
 	.seh_proc	_ZN6Common8newPixelEPmmm
 _ZN6Common8newPixelEPmmm:
-.LFB6741:
+.LFB6742:
 	pushq	%r15
 	.seh_pushreg	%r15
 	pushq	%r14
@@ -94,7 +105,7 @@ _ZN6Common8newPixelEPmmm:
 	movb	$-1, 55(%rsp)
 	leal	(%rbx,%rbx), %r14d
 	movq	%rax, 40(%rsp)
-.L17:
+.L18:
 	movq	40(%rsp), %rcx
 	movq	32(%rsp), %rax
 	call	*%rax
@@ -105,11 +116,11 @@ _ZN6Common8newPixelEPmmm:
 	leaq	1000(%rax), %rcx
 	cmovs	%rcx, %rax
 	cmpq	$15, %rax
-	jg	.L32
+	jg	.L33
 	leaq	64(%rsp), %r13
 	.p2align 4,,10
 	.p2align 3
-.L5:
+.L6:
 	call	rand
 	xorl	%edx, %edx
 	divl	8+sBuffer(%rip)
@@ -128,7 +139,7 @@ _ZN6Common8newPixelEPmmm:
 	call	_ZN8Graphics8GetPixelEP11SizedBuffer7Point2D
 	movl	%eax, %esi
 	testl	%eax, %eax
-	je	.L7
+	je	.L8
 	movl	%eax, %ebx
 	xorl	%edi, %edi
 	call	rand
@@ -138,53 +149,53 @@ _ZN6Common8newPixelEPmmm:
 	shrl	$16, %eax
 	movzbl	%al, %edx
 	movl	%ecx, %eax
-	andl	$16, %eax
-	leal	-8(%rdx,%rax), %eax
+	andl	$4, %eax
+	leal	-2(%rdx,%rax), %eax
 	testw	%ax, %ax
-	js	.L8
+	js	.L9
 	movl	%eax, %edi
 	sall	$16, %edi
 	cmpw	$256, %ax
 	cmovge	%r15d, %edi
-.L8:
-	call	rand
-	movzbl	%bl, %ebx
-	andl	$16, %eax
-	leal	-8(%rbx,%rax), %ebx
-	testw	%bx, %bx
-	js	.L22
-	cmpw	$255, %bx
-	jg	.L10
-	movzwl	%bx, %ebx
-	sall	$8, %ebx
 .L9:
 	call	rand
+	movzbl	%bl, %ebx
+	andl	$4, %eax
+	leal	-2(%rbx,%rax), %ebx
+	testw	%bx, %bx
+	js	.L23
+	cmpw	$255, %bx
+	jg	.L11
+	movzwl	%bx, %ebx
+	sall	$8, %ebx
+.L10:
+	call	rand
 	movzbl	%sil, %edx
-	andl	$16, %eax
-	leal	-8(%rdx,%rax), %eax
+	andl	$4, %eax
+	leal	-2(%rdx,%rax), %eax
 	testw	%ax, %ax
-	js	.L11
-.L19:
+	js	.L12
+.L20:
 	cmpw	$255, %ax
-	jg	.L33
+	jg	.L34
 	movzbl	%al, %eax
 	orl	%eax, %edi
-.L11:
+.L12:
 	orl	%edi, %ebx
 	movl	%ebx, %esi
 	orl	$-16777216, %esi
 	testl	%ebx, %ebx
-	je	.L7
+	je	.L8
 	.p2align 4,,10
 	.p2align 3
-.L14:
+.L15:
 	call	rand
 	cltd
 	shrl	$28, %edx
 	addl	%edx, %eax
 	andl	$15, %eax
 	subl	%edx, %eax
-	je	.L14
+	je	.L15
 	movl	%eax, %ecx
 	movl	%eax, %edx
 	xorl	%r8d, %r8d
@@ -208,51 +219,51 @@ _ZN6Common8newPixelEPmmm:
 	movq	%xmm0, 64(%rsp)
 	call	_ZN8Graphics9InitPixelEP11SizedBufferRK8Colour2D6Colour
 	testb	%al, %al
-	jne	.L34
+	jne	.L35
 	leaq	1(%rbp), %rax
 	cmpq	%rbp, %r14
-	jb	.L3
-.L15:
+	jb	.L4
+.L16:
 	movq	%rax, %rbp
-	jmp	.L5
+	jmp	.L6
 	.p2align 4,,10
 	.p2align 3
-.L7:
+.L8:
 	movq	%rbp, %rax
-	jmp	.L15
+	jmp	.L16
 	.p2align 4,,10
 	.p2align 3
-.L22:
+.L23:
 	xorl	%ebx, %ebx
-	jmp	.L9
+	jmp	.L10
 	.p2align 4,,10
 	.p2align 3
-.L33:
+.L34:
 	movl	%ebx, %esi
 	orl	%edi, %esi
 	orl	$-16776961, %esi
-	jmp	.L14
+	jmp	.L15
 	.p2align 4,,10
 	.p2align 3
-.L10:
+.L11:
 	call	rand
 	movzbl	%sil, %esi
 	movl	$65280, %ebx
-	andl	$16, %eax
-	leal	-8(%rax,%rsi), %eax
+	andl	$4, %eax
+	leal	-2(%rax,%rsi), %eax
 	movl	%edi, %esi
 	orl	$-16711936, %esi
 	testw	%ax, %ax
-	jns	.L19
-	jmp	.L14
-.L32:
+	jns	.L20
+	jmp	.L15
+.L33:
 	movq	56(%rsp), %rcx
 	movq	32(%rsp), %rax
 	call	*%rax
 	movl	$1, %ecx
 	call	*__imp_Sleep(%rip)
 	nop
-.L3:
+.L4:
 	movups	112(%rsp), %xmm6
 	addq	$136, %rsp
 	popq	%rbx
@@ -264,17 +275,17 @@ _ZN6Common8newPixelEPmmm:
 	popq	%r14
 	popq	%r15
 	ret
-.L34:
+.L35:
 	subb	$1, 55(%rsp)
-	jne	.L17
-	jmp	.L3
+	jne	.L18
+	jmp	.L4
 	.seh_endproc
 	.p2align 4
 	.globl	_ZN6Common13simulateFrameEPmmm
 	.def	_ZN6Common13simulateFrameEPmmm;	.scl	2;	.type	32;	.endef
 	.seh_proc	_ZN6Common13simulateFrameEPmmm
 _ZN6Common13simulateFrameEPmmm:
-.LFB6739:
+.LFB6740:
 	pushq	%rbp
 	.seh_pushreg	%rbp
 	pushq	%rdi
@@ -290,14 +301,14 @@ _ZN6Common13simulateFrameEPmmm:
 	movl	%edx, %ebx
 	movl	%r8d, %esi
 	testl	%r8d, %r8d
-	je	.L35
+	je	.L36
 	testl	%edx, %edx
-	je	.L35
+	je	.L36
 	cmpl	%edx, 12+sBuffer(%rip)
-	jne	.L37
+	jne	.L38
 	cmpl	%r8d, 8+sBuffer(%rip)
-	je	.L38
-.L37:
+	je	.L39
+.L38:
 	xorl	%ecx, %ecx
 	leaq	sBuffer(%rip), %rbp
 	call	*__imp__time64(%rip)
@@ -316,13 +327,13 @@ _ZN6Common13simulateFrameEPmmm:
 	movq	%rdi, sBuffer(%rip)
 	movl	%esi, 8+sBuffer(%rip)
 	movl	%ebx, 12+sBuffer(%rip)
-	movl	$-10760454, 40(%rsp)
+	movl	$-11990383, 40(%rsp)
 	movq	%xmm0, 32(%rsp)
 	call	_ZN8Graphics8DrawRectEP11SizedBufferRK8Colour2D7Point2D
 	leaq	32(%rsp), %rdx
 	movq	%rbp, %rcx
 	call	_ZN8Graphics8SetPixelEP11SizedBufferRK8Colour2D
-.L38:
+.L39:
 	movl	%esi, %r8d
 	movl	%ebx, %edx
 	movq	%rdi, %rcx
@@ -334,7 +345,7 @@ _ZN6Common13simulateFrameEPmmm:
 	jmp	_ZN6Common8newPixelEPmmm
 	.p2align 4,,10
 	.p2align 3
-.L35:
+.L36:
 	addq	$56, %rsp
 	popq	%rbx
 	popq	%rsi
@@ -347,7 +358,7 @@ _ZN6Common13simulateFrameEPmmm:
 	.def	_ZN6Common10colourShitEmmha;	.scl	2;	.type	32;	.endef
 	.seh_proc	_ZN6Common10colourShitEmmha
 _ZN6Common10colourShitEmmha:
-.LFB6742:
+.LFB6743:
 	pushq	%r13
 	.seh_pushreg	%r13
 	pushq	%r12
@@ -374,7 +385,7 @@ _ZN6Common10colourShitEmmha:
 	movl	%eax, %ebx
 	movl	$-16777216, %eax
 	testl	%ebx, %ebx
-	je	.L39
+	je	.L40
 	call	rand
 	movzbl	%dil, %ebp
 	movl	%ebx, %edx
@@ -390,32 +401,32 @@ _ZN6Common10colourShitEmmha:
 	addl	%esi, %edx
 	xorl	%r13d, %r13d
 	addw	%ax, %dx
-	js	.L41
+	js	.L42
 	movl	%edx, %r13d
 	movl	$16711680, %eax
 	sall	$16, %r13d
 	cmpw	$256, %dx
 	cmovge	%eax, %r13d
-.L41:
+.L42:
 	call	rand
 	movzbl	%r12b, %r12d
 	xorl	%edi, %edi
 	andl	%ebp, %eax
 	addl	%esi, %r12d
 	addw	%r12w, %ax
-	js	.L42
+	js	.L43
 	movzwl	%ax, %edi
 	sall	$8, %edi
 	cmpw	$256, %ax
 	movl	$65280, %eax
 	cmovge	%eax, %edi
-.L42:
+.L43:
 	call	rand
 	movzbl	%bl, %ebx
 	andl	%eax, %ebp
 	addl	%esi, %ebx
 	addw	%bx, %bp
-	js	.L43
+	js	.L44
 	movl	%r13d, %edx
 	movzwl	%bp, %eax
 	orl	%r13d, %eax
@@ -423,11 +434,11 @@ _ZN6Common10colourShitEmmha:
 	cmpw	$256, %bp
 	cmovl	%eax, %edx
 	movl	%edx, %r13d
-.L43:
+.L44:
 	movl	%edi, %eax
 	orl	%r13d, %eax
 	orl	$-16777216, %eax
-.L39:
+.L40:
 	addq	$40, %rsp
 	popq	%rbx
 	popq	%rsi
@@ -442,7 +453,7 @@ _ZN6Common10colourShitEmmha:
 	.def	_ZN6Common7posShitEmm;	.scl	2;	.type	32;	.endef
 	.seh_proc	_ZN6Common7posShitEmm
 _ZN6Common7posShitEmm:
-.LFB6743:
+.LFB6744:
 	pushq	%rsi
 	.seh_pushreg	%rsi
 	pushq	%rbx
@@ -454,14 +465,14 @@ _ZN6Common7posShitEmm:
 	movl	%edx, %esi
 	.p2align 4,,10
 	.p2align 3
-.L52:
+.L53:
 	call	rand
 	cltd
 	shrl	$28, %edx
 	addl	%edx, %eax
 	andl	$15, %eax
 	subl	%edx, %eax
-	je	.L52
+	je	.L53
 	movl	%eax, %edx
 	movl	%eax, %ecx
 	shrb	%dl
@@ -489,15 +500,15 @@ _ZN6Common7posShitEmm:
 	.def	_Z5clamps;	.scl	2;	.type	32;	.endef
 	.seh_proc	_Z5clamps
 _Z5clamps:
-.LFB6744:
+.LFB6745:
 	.seh_endprologue
 	xorl	%eax, %eax
 	testw	%cx, %cx
-	js	.L54
+	js	.L55
 	cmpw	$255, %cx
 	movl	$-1, %eax
 	cmovle	%ecx, %eax
-.L54:
+.L55:
 	ret
 	.seh_endproc
 	.globl	sBuffer

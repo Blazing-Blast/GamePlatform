@@ -8,7 +8,7 @@ Open `libless.exe`, it is the main excutable. (windows only)
 
 ## How to compile?
 
-Run `make all`. If you changed anything in the makefile, you probably want to run `make clean` first.
+Run `make all`. If you changed anything in the makefile or settings, you probably want to run `make clean` first.
 
 ## How to play with the settinngs?
 

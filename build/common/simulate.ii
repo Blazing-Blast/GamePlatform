@@ -69,6 +69,25 @@ namespace Graphics {
 
 }
 # 3 "src/common/simulate.cpp" 2
+# 1 "src/common/../../settings.hpp" 1
+# 1 "src/common/../../src/common/types/types.hpp" 1
+# 2 "src/common/../../settings.hpp" 2
+
+u32 contrast(u32 input) {return input ^ 0x00FFFFFF;}
+
+const u32 purple = 0xFFBB00FF;
+const u32 black = 0xFF000000;
+const u32 white = 0xFFFFFFFF;
+const u32 nearBlack = 0xFF010101;
+const u32 gray = 0xFFBBBBBB;
+const u32 transBlue = 0xFF5BCEFA;
+const u32 darPurple = 0xFF490A91;
+
+const u32 foreground = darPurple;
+const u32 background = black;
+const u8 variance = 2;
+const i8 bias = 0;
+# 4 "src/common/simulate.cpp" 2
 
 # 1 "C:/msys64/mingw64/include/synchapi.h" 1 3
 
@@ -70649,7 +70668,7 @@ extern "C" {
   WINBOOL SetWaitableTimerEx (HANDLE hTimer, const LARGE_INTEGER *lpDueTime, LONG lPeriod, PTIMERAPCROUTINE pfnCompletionRoutine, LPVOID lpArgToCompletionRoutine, PREASON_CONTEXT WakeContext, ULONG TolerableDelay);
 # 150 "C:/msys64/mingw64/include/synchapi.h" 3
 }
-# 5 "src/common/simulate.cpp" 2
+# 6 "src/common/simulate.cpp" 2
 # 1 "C:/msys64/mingw64/include/sysinfoapi.h" 1 3
 # 14 "C:/msys64/mingw64/include/sysinfoapi.h" 3
 extern "C" {
@@ -70751,12 +70770,12 @@ extern "C" {
 
 
 }
-# 6 "src/common/simulate.cpp" 2
+# 7 "src/common/simulate.cpp" 2
 # 1 "C:/msys64/mingw64/include/c++/12.2.0/cstdlib" 1 3
 # 39 "C:/msys64/mingw64/include/c++/12.2.0/cstdlib" 3
        
 # 40 "C:/msys64/mingw64/include/c++/12.2.0/cstdlib" 3
-# 7 "src/common/simulate.cpp" 2
+# 8 "src/common/simulate.cpp" 2
 # 1 "C:/msys64/mingw64/include/c++/12.2.0/ctime" 1 3
 # 39 "C:/msys64/mingw64/include/c++/12.2.0/ctime" 3
        
@@ -71045,7 +71064,7 @@ namespace std
   using ::localtime;
   using ::strftime;
 }
-# 8 "src/common/simulate.cpp" 2
+# 9 "src/common/simulate.cpp" 2
 # 1 "C:/msys64/mingw64/include/c++/12.2.0/cstring" 1 3
 # 39 "C:/msys64/mingw64/include/c++/12.2.0/cstring" 3
        
@@ -71105,23 +71124,10 @@ namespace std
 
 }
 }
-# 9 "src/common/simulate.cpp" 2
+# 10 "src/common/simulate.cpp" 2
 
 
-# 10 "src/common/simulate.cpp"
-const u32 purple = 0xFFBB00FF;
-const u32 contrast = 0x00FFFFFF ^ purple;
-const u32 black = 0xFF000000;
-const u32 white = 0xFFFFFFFF;
-const u32 nearBlack= 0xFF010101;
-const u32 gray = 0xFFBBBBBB;
-const u32 transBlue= 0xFF5BCEFA;
-
-const u32 foreground = transBlue;
-const u32 background = black;
-const u8 variance = 4;
-const i8 bias = 0;
-
+# 11 "src/common/simulate.cpp"
 const Colour2D bg = {Point2D{0, 0}, background};
 SizedBuffer sBuffer;
 
