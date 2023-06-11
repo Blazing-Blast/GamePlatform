@@ -4,13 +4,12 @@
 #include "src/common/types/types.hpp"
 
 #define contrast(col) ((col) ^ 0x00FFFFFF)
-#define tune(col, var) ((col) + nearBlack * (var))
 
 //primary colours
 #define red         0xFFFF0000
 #define green       0xFF00FF00
 #define blue        0xFF0000FF
-//secundary collours
+//secondary collours
 #define yellow      0xFFFFFF00
 #define pruple      0xFFFF00FF
 #define cyan        0xFF00FFFF
@@ -29,8 +28,12 @@
 
 const u32 foreground = darkElec;
 const u32 background = black;
+// This is how much each pixel's r, g and b value is allowed to change each step.
+// It is in 1 << (variance - 1)
 const u8  variance   = 2; // setting this to 0 will make it tend to white, otherwise it will behave as expected.
+// A correction term that will be added after the variance.
 const i8  bias       = 0;
+// ms per frome
 const i32 frameTime = 1000/60;
 
 #endif
