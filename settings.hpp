@@ -1,6 +1,10 @@
+#ifndef SETTINGS_HPP
+#define SETTINGS_HPP
+
 #include "src/common/types/types.hpp"
 
 #define contrast(col) ((col) ^ 0x00FFFFFF)
+#define tune(col, var) ((col) + nearBlack * (var))
 
 //primary colours
 #define red         0xFFFF0000
@@ -22,9 +26,10 @@
 #define transBlue   0xFF5BCEFA
 #define darioPurple 0xFF490A91
 
-#define tune(col, var) ((col) + nearBlack * (var))
 
 const u32 foreground = darkElec;
 const u32 background = black;
 const u8  variance   = 2; // setting this to 0 will make it tend to white, otherwise it will behave as expected.
 const i8  bias       = 0;
+
+#endif

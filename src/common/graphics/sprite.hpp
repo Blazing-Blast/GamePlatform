@@ -3,16 +3,15 @@
 
 #include "../types/types.hpp"
 
-typedef struct Sprite{
+typedef struct Sprite {
     Colour *buffer;
     u32 width;
     u32 height;
-}Sprite;
+} Sprite;
 
 namespace Graphics {
-    void DrawSprite(SizedBuffer *buffer, Point2D position, const Sprite &sprite);
-    void ZoomSprite(SizedBuffer *buffer, Point2D position, const Sprite &sprite, u32 zoom);
+    void drawSprite(SizedBuffer *buffer, Point2D position, const Sprite &sprite);
+    void zoomSprite(SizedBuffer *buffer, Point2D position, const Sprite &sprite, u32 zoom);
 }
-
 
 #endif

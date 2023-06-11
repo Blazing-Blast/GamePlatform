@@ -1,4 +1,9 @@
+#ifndef COMMON_SIMULATE_HPP
+#define COMMON_SIMULATE_HPP
+
 #include "types/types.hpp"
+
+SizedBuffer sBuffer;
 
 namespace Common {
     void    simulateFrame(u32 *buffer, u32 height, u32 width);
@@ -9,3 +14,5 @@ namespace Common {
 }
 
 u8 clamp(i16 value);
+
+#endif

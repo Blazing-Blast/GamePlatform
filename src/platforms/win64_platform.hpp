@@ -1,3 +1,6 @@
+#ifndef PLATFORMS_WIN64_PLATFORM_HPP
+#define PLATFORMS_WIN64_PLATFORM_HPP
+
 #include <windows.h>
 #include <iostream>
 #include <algorithm>
@@ -20,3 +23,5 @@ namespace Windows {
     int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd);
     LRESULT windowCallback(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 }
+
+#endif

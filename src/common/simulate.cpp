@@ -9,7 +9,6 @@
 #include <cstring>
 
 const Colour2D bg  = {Point2D{0, 0}, background};
-SizedBuffer sBuffer;
 
 void Common::simulateFrame(u32 *buffer, u32 height, u32 width) {
     if (width <= 0 || height <= 0) return;
@@ -25,8 +24,8 @@ void Common::onResize(u32 *buffer, u32 height, u32 width) {
 
     sBuffer = {.buffer = (Colour*)(void*)buffer, .width = width, .height = height};
     Colour2D startPixel = {.pos = {width/2, height/2}, .col = {foreground}};
-    Graphics::DrawRect(&sBuffer, bg, {width, height});
-    Graphics::SetPixel(&sBuffer, startPixel);
+    Graphics::drawRect(&sBuffer, bg, {width, height});
+    Graphics::setPixel(&sBuffer, startPixel);
 }
 
 void Common::generatePixels(u32 *buffer, u32 height, u32 width) {
@@ -65,7 +64,7 @@ void Common::generatePixels(u32 *buffer, u32 height, u32 width) {
 
             Colour2D pixel = {pos, {col}};
 
-            if (Graphics::InitPixel(&sBuffer, pixel, {background & 0x00FFFFFF})) {
+            if (Graphics::onitPixel(&sBuffer, pixel, {background & 0x00FFFFFF})) {
                 gen--;
                 break;
             }
@@ -76,7 +75,7 @@ void Common::generatePixels(u32 *buffer, u32 height, u32 width) {
 }
 
 u32 Common::colourShit(u32 x, u32 y, u8 variance, i8 bias) {
-    Colour col = Graphics::GetPixel(&sBuffer, {x ,y});
+    Colour col = Graphics::getPixel(&sBuffer, {x ,y});
     if (!col.c) return background;
 
     u8 r = (col.c & 0x00FF0000) >> 16;
