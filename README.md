@@ -4,7 +4,9 @@ This is a simple program to give cool looking paterns. It does not depend on any
 
 ## How to run?
 
-Open `libless.exe`, it is the main excutable. (windows only)
+(windows only)
+Open `libless.exe`, it is the main excutable.
+You can also use `make run` and `make new`.
 
 ## How to compile?
 

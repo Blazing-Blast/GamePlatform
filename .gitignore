@@ -1,6 +1,10 @@
 # Prerequisites
 *.d
 
+# other preprocesser and assembly files
+*.ii
+*.s
+
 # Compiled Object files
 *.slo
 *.lo

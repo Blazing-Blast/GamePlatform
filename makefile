@@ -13,9 +13,11 @@ SRCS := $(call rwildcard, $(SRCDIR), *.cpp, *.c, *.hpp, *.h)
 OBJS := $(patsubst $(SRCDIR)%, $(BUILDDIR)%, $(patsubst %.cpp,%.o, $(patsubst %.hpp,%.o, $(patsubst %.c,%.o, $(patsubst %.h,%.o, $(SRCS))))))
 DEPS := $(patsubst $(SRCDIR)%, $(BUILDDIR)%, $(OBJS:.o=.d))
 
-.PHONY: all clean
+.PHONY: all clean new
 
 all: $(PRGM)
+
+new: clean all run
 
 run: $(PRGM)
 	$<

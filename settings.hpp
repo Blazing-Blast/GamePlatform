@@ -1,16 +1,27 @@
 #include "src/common/types/types.hpp"
 
-u32 contrast(u32 input) {return input ^ 0x00FFFFFF;}
+#define contrast(col) ((col) ^ 0x00FFFFFF)
 
-const u32 purple    = 0xFFBB00FF;
-const u32 black     = 0xFF000000;
-const u32 white     = 0xFFFFFFFF;
-const u32 nearBlack = 0xFF010101;
-const u32 gray      = 0xFFBBBBBB;
-const u32 transBlue = 0xFF5BCEFA;
-const u32 darPurple = 0xFF490A91;
+//primary colours
+#define red         0xFFFF0000;
+#define green       0xFF00FF00;
+#define blue        0xFF0000FF;
+//secundary collours
+#define yellow      0xFFFFFF00;
+#define pruple      0xFFFF00FF;
+#define cyan        0xFF00FFFF;
+//Grayscale
+#define black       0xFF000000;
+#define nearBlack   0xFF010101;
+#define gray        0xFFBBBBBB;
+#define nearWhite   0xFFFEFEFE;
+#define white       0xFFFFFFFF;
+//Excotics
+#define Elecpurple  0xFFBB00FF;
+#define transBlue   0xFF5BCEFA;
+#define darioPurple 0xFF490A91;
 
-const u32 foreground = darPurple;
+const u32 foreground = Elecpurple;
 const u32 background = black;
-const u8  variance   = 2; // setting this to 0 will make it tend to white, otherwise it will behave as expected.
+const u8  variance   = 4; // setting this to 0 will make it tend to white, otherwise it will behave as expected.
 const i8  bias       = 0;
