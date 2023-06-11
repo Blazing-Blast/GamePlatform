@@ -24,34 +24,10 @@ int Windows::WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         0 // other data
     );
 
-    // SYSTEMTIME time;
-    // GetSystemTime(&time);
-
-    // SYSTEMTIME newTime;
-
     const HDC handle = GetDC(window);
-
-    // LONG64 deltaTime = 0;
-    // const LONG64 frameTime = 1000/6000;
-    // const LONG64 frame10 = frameTime*10;
-
-    while(going) {
-        // GetSystemTime(&newTime);
-        // deltaTime = newTime.wMilliseconds - time.wMilliseconds;
-        // deltaTime = deltaTime >= 0 ? deltaTime : (deltaTime + 1000);
-
-        // if (deltaTime > frame10) {
-        //     std::cout << "We're lagging way too hard. We have missed 10 frames or " << deltaTime << " miliseconds. Skipping this frame." << std::endl;
-        //     GetSystemTime(&time);
-        // } else
-        // if (deltaTime >= frameTime) {
-            // std::cout << deltaTime << std::endl;
-            runFrame(window, handle);
-        //     GetSystemTime(&time);
-        // } else
-            // Sleep (frameTime - deltaTime);
-    }
-
+    while(going) 
+        runFrame(window, handle);
+    
     return 0;
 }
 

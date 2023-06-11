@@ -19,16 +19,6 @@ void Graphics::ZoomSprite(SizedBuffer *buffer, Point2D position, const Sprite &s
 
             if (!(col.c & 0xFF000000)) continue; // check if alpha channel is set
 
-            // Using a breakpoint I can see that:
-            // zoom: 10
-            // x: 1
-            // y: 0
-            // position: 
-            //   x: 200
-            //   y: 500
-            // col:
-            //  c: 0xFF44FF00 (4282711808)
-
             const Colour2D pixel = Colour2D {
                 .pos = Point2D {
                     .x = position.x + (x * zoom),
@@ -36,22 +26,6 @@ void Graphics::ZoomSprite(SizedBuffer *buffer, Point2D position, const Sprite &s
                 },
                 .col = col
             };
-
-            // Afterwards:
-            // pixel:
-            //   pos:
-            //     x: 0
-            //     y: 2
-            //   col:
-            //     c: 0xFF44FF00 (4282711808)
-
-            // Expected behaivor:
-            // pixel:
-            //   pos:
-            //     x: 200
-            //     y: 520
-            //   col:
-            //     c: 0xFF44FF00 (4282711808)
 
             Graphics::DrawRect(buffer, pixel, Point2D {zoom, zoom});
         }

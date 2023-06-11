@@ -17,10 +17,10 @@ void Common::simulateFrame(u32 *buffer, u32 height, u32 width) {
     if (height != sBuffer.height || width != sBuffer.width)
         Common::onResize(buffer, height, width);
 
-    Common::newPixel(buffer, height, width);
+    Common::generatePixels(buffer, height, width);
 }
 
-void Common::onResize(u32 *buffer, u32 height, u32 width){
+void Common::onResize(u32 *buffer, u32 height, u32 width) {
     std::srand(std::time(nullptr));
 
     sBuffer = {.buffer = (Colour*)(void*)buffer, .width = width, .height = height};
@@ -29,7 +29,7 @@ void Common::onResize(u32 *buffer, u32 height, u32 width){
     Graphics::SetPixel(&sBuffer, startPixel);
 }
 
-void Common::newPixel(u32 *buffer, u32 height, u32 width) {
+void Common::generatePixels(u32 *buffer, u32 height, u32 width) {
 
     u64 tries = 0;
     u8 gen = 0xFF;
