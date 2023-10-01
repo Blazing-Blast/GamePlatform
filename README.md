@@ -12,7 +12,7 @@ You can also use `make run` and `make new`.
 
 Run `make all`. If you changed anything in the makefile or settings, you probably want to run `make clean` first.
 
-## How to play with the settinngs?
+## How to play with the settings?
 
 The settings are defined in `settings.hpp`.
 The varibles to change are:
